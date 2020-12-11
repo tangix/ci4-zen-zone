@@ -1,6 +1,8 @@
 # Code for Bearer Authorization Filter
 
-```
+This code is not complete and does not run without all other dependencies and classes. I consider this a pseudo-code and it is thus put here as a code-block and not as a source file.
+
+```php
 <?php
 
 /**

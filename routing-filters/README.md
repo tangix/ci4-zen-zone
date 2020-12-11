@@ -165,7 +165,7 @@ Much can be said about the readability of this code segment. Starting from the t
 $routes->options('config/(:any)', 'Options::index');
 ```
 
-This defines a catch-all route for ``OPTIONS`` request from the browser to validate cross-origin configuration. Since the ``OPTIONS`` request from the browser doesn't expose any credentials the ``Authorization Bearer`` header is not included. All ``OPTIONS`` requests are handled by ``app/Controllers/Options.php`` included [here](Options.php).
+This defines a catch-all route for ``OPTIONS`` request from the browser to validate cross-origin configuration. Since the ``OPTIONS`` request from the browser doesn't expose any credentials the ``Authorization Bearer`` header is not included. All ``OPTIONS`` requests are handled by ``app/Controllers/Options.php`` included [here](src/Options.php).
 
 ```php
 $routes->group('config', ['filter' => 'bearer-auth:conf'], function($routes) {
