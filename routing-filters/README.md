@@ -247,4 +247,4 @@ public function put_regions($id)
 
 The ``validateVersionAndUpdate()`` method contains checks to make sure the passed ``item_version`` matches the value stored in the database. If there is a match, the database version number is incremented and a 204 response is generated so the front-end knows the update was successful and increments the ``item_version``.
 
-If another front-end client tries to update the record, a lower ``item_version`` will be passed to the back-end and the update will generate a 409 response and idnicate to the user that the local store of information needs to be refreshed.
+If another front-end client tries to update the record, a lower ``item_version`` will be passed to the back-end and the update will generate a 409 (Conflict) response and the front-end will tell the user to refresh the local store and try editing again.
