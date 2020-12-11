@@ -73,7 +73,7 @@ public function __construct()
 ```
 
 ### Cache.php
-Here a fixed version of the Redis handler is defined in ``$validHandlers``. This because of a bug handling cache TTL exists in CI 4.0.4 (fixed for next CI release). Instead of mucking in the composer installed framework I defined a new handler overriding ``RedisHandler::save()``.
+Here a fixed version of the Redis handler is defined in ``$validHandlers``. This because of a bug handling cache TTL exists in CI 4.0.4 (fixed for next CI release). 
 
 ```php
 public $validHandlers = [
@@ -81,6 +81,12 @@ public $validHandlers = [
     'fixedredis' => FixedRedisHandler::class,
     ...
 ];
+```
+
+Instead of mucking in the composer installed framework I defined my own handler ``App\Libraries\FixedRedisHandler`` overriding ``RedisHandler::save()`` with a fixed version and then using that handler 
+
+```php
+public $handler = 'fixedredis';
 ```
 
 ### Database.php
@@ -126,7 +132,7 @@ Services::bearer()
 If the user don't have access to the setting, an exception is thrown and a 403 (Forbidden) response is generated.
 
 ## Routing definitions
-The incoming request is checked for routes defined in ``app/Config/Routes.php``. Since automatic routing is disabled a 404 response will be generated if no defined route is found.
+The incoming request is checked for routes defined in ``app/Config/Routes.php``. Since automatic routing is disabled a 404 (Not Found) response will be generated if no defined route is found.
 
 For this discussion I will use a portion of the ``Routes.php`` file defining CRUD actions for working with a configuration object "Region". The Region object is defined as a [Model](https://codeigniter4.github.io/userguide/models/model.html) in CodeIgniter with a corresponding [Entity](https://codeigniter4.github.io/userguide/models/entities.html).
 
@@ -175,7 +181,7 @@ This line starts a [route group](https://codeigniter4.github.io/userguide/incomi
 
 The ``filter`` argument refers to the ``BearerAuthFilter`` filter responsible for checking client Authorization. Within the ``group()``, the filter definition applies to all defined routes. The filter is defined as ``bearer-auth:conf`` where the ``:`` denotes arguments that are passed to the filter's ``before()`` function. 
 
-``BearerAuthFilter::before(RequestInterface $request, $arguments = null)`` will validate the JWT and generate 400, 401 or 403 responses if required. If the token validation pass (correctly formatted and signed, not expired and issued by this server), the permissions indicated in ``$arguments`` will be checked. If the permissions match the user's permissions set in the system, the filter will accept the request and return ``$request`` to allow processing of the request to continue and pass control to the Controller code.
+``BearerAuthFilter::before(RequestInterface $request, $arguments = null)`` will validate the JWT and generate 400 (Bad Request), 401 (Unathorized) or 403 (Forbidden) responses if required. If the token validation pass (correctly formatted and signed, not expired and issued by this server), the permissions indicated in ``$arguments`` will be checked. If the permissions match the user's permissions set in the system, the filter will accept the request and return ``$request`` to allow processing of the request to continue and pass control to the Controller code.
 
 ## Controller Code
 
@@ -211,7 +217,7 @@ The front-end posts the data as JSON with a phantom record id set to a negative 
 {"id":null,"regionID":-2,"cnt":0,"geos_cnt":0,"item_version":1,"regionName":"DemoRegion"}
 ```
 
-The controller functions starts by checking the user's permissions. This check will throw an ``\App\Exceptions\RequestException`` exception if it fails that will be caught by a central exception handler configured in ``\App\Controllers\BaseController``.
+The controller functions starts by checking the user's permissions. This check will throw an ``App\Exceptions\RequestException`` exception if it fails that will be caught by a central exception handler configured in ``App\Controllers\BaseController``.
 
 If the request validates, the Region record will be inserted in the database and a success message is returned to the front-end exchanging the front-end's phantom record id (``clientId``) for the real record id (``regionID``) that is defined in both front- and back-ends' model.
 
@@ -221,7 +227,7 @@ If the request validates, the Region record will be inserted in the database and
 
 ### Handling PUT requests
 
-Requests for updating records are a bit more complex and involves making sure that the record in the back-end hasn't been modified by another user. Ext JS handles this by adding an internal ``item_version`` field to all models. This version field is updated locally in the front-end when an edit is made and the saved to the backend.
+Requests for updating records are a bit more complex and involves making sure that the record in the back-end hasn't been modified by another user. Ext JS handles this by adding an internal ``item_version`` field to all models. This version field is updated locally in the front-end when an edit is made and then saved to the backend.
 
 The ``$id`` of the resource to act on is passed to the method by means of the ``(:segment)`` field from the defined route.
 
@@ -247,6 +253,12 @@ public function put_regions($id)
 }
 ```
 
-The ``validateVersionAndUpdate()`` method contains checks to make sure the passed ``item_version`` matches the value stored in the database. If there is a match, the database version number is incremented and a 204 response is generated so the front-end knows the update was successful and increments its local ``item_version``.
+The ``validateVersionAndUpdate()`` method contains checks to make sure the passed ``item_version`` matches the value stored in the database. If there is a match, the database version number is incremented and a 204 (No Content) response is generated so the front-end knows the update was successful and increments its local ``item_version``.
 
 If another front-end client tries to update the record, a lower ``item_version`` will be passed to the back-end and the update will generate a 409 (Conflict) response and the front-end will tell the user to refresh the local store and try editing again.
+
+## Food for thoughts
+
+Some improvements that have occurred to me while compiling this document and that should be considered implementing.
+
+* Use of ``(:num)`` instead of ``(:segment)`` in routes where appropriate
