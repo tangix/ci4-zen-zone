@@ -7,3 +7,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 ## Articles
 
 * [My use of Filters for Authorization in a RESTful admin interface](routing-filters/)
+
+## Rants
+
+* [The dangers of the .env file](rants/dangers-of-env-file.md)
