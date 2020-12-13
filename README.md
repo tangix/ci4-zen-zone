@@ -10,4 +10,5 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Rants
 
+* [Nesting route groups may not work as expected](rants/nesting-route-groups.md)
 * [The dangers of the .env file](rants/dangers-of-env-file.md)
