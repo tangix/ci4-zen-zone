@@ -14,5 +14,6 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Rants
 
+* [Writing Controller Tests](rants/controller-tests.md) (2020-12-25)
 * [Nesting route groups may not work as expected](rants/nesting-route-groups.md) (2020-12-13)
 * [The dangers of the .env file](rants/dangers-of-env-file.md) (2020-12-11)
