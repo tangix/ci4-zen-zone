@@ -10,6 +10,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Articles
 
+* [Non-destructive Database testing](db-testing/non-destrive-db-testing.md) (2022-05-20)
 * [My use of Filters for Authorization in a RESTful admin interface](routing-filters/) (2020-12-11)
 * [Using CodeIgniter's Custom Casting mechanism](casting/) (2021-07-24)
 
