@@ -16,6 +16,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Rants
 
+* [PHP 8.1 migration thoughts](rants/php-81-features.md) (2022-06-03)
 * [Namespace problems with Config-files](rants/namespace-problems.md) (2022-06-02)
 * [.env and Docker environment](rants/dotenv-and-docker.md) (2021-01-10)
 * [Writing Controller Tests](rants/controller-tests.md) (2020-12-25)
