@@ -17,7 +17,7 @@ However, there is a danger here when passing options to the ``group()``. Conside
 ```php
 $routes->group('config', ['filter' => 'config'], function ($routes) {
     $routes->get('/', 'Config::index');
-    $routes->group('region', |'filter' => 'region'], function ($routes) {
+    $routes->group('region', ['filter' => 'region'], function ($routes) {
         $routes->get('/', 'Region::index');
     });
 });

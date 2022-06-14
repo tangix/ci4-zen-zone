@@ -15,8 +15,9 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 * [My use of Filters for Authorization in a RESTful admin interface](routing-filters/) (2020-12-11)
 * [Using CodeIgniter's Custom Casting mechanism](casting/) (2021-07-24)
 
-## Rants
+## Rants and Thoughts
 
+* [Using correct PHP Docker image](rants/using-correct-php-docker.md) (2022-06-14)
 * [PHP 8.1 migration thoughts](rants/php-81-features.md) (2022-06-03)
 * [Namespace problems with Config-files](rants/namespace-problems.md) (2022-06-02)
 * [.env and Docker environment](rants/dotenv-and-docker.md) (2021-01-10)
