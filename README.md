@@ -10,6 +10,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Articles
 
+* [Mocking models while testing](db-testing/mocking-models.md) (2022-06-17)
 * [The hassle of creating a BAMBOO project](creating-bamboo/) (2022-06-07)
 * [Non-destructive Database testing](db-testing/non-destrive-db-testing.md) (2022-05-20)
 * [My use of Filters for Authorization in a RESTful admin interface](routing-filters/) (2020-12-11)
