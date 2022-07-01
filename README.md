@@ -18,6 +18,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Rants and Thoughts
 
+* [Making JSON parsing more strict](rants/stricter-json.md) (2022-07-01)
 * [Using correct PHP Docker image](rants/using-correct-php-docker.md) (2022-06-14)
 * [PHP 8.1 migration thoughts](rants/php-81-features.md) (2022-06-03)
 * [Namespace problems with Config-files](rants/namespace-problems.md) (2022-06-02)
