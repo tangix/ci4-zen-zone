@@ -21,7 +21,7 @@ and after a re-installation of JDK 7:
 Unable to create javax script engine for javascript
 ```
 
-Reinstallation of OpenJDK, Oracle Java and Tenmurin Java I was close to tears. `java_home` now shows an impressive amount of installed Java run-times, which one to pick?
+Reinstallation of OpenJDK, Oracle Java and Tenmurin Java and I was close to tears. `java_home` now shows an impressive amount of installed Java run-times, which one to pick?
 
 ```
 msa@verdandi ci4-zen-zone % /usr/libexec/java_home -V
@@ -37,8 +37,10 @@ Matching Java Virtual Machines (8):
 /Library/Java/JavaVirtualMachines/temurin-18.jdk/Contents/Home
 ```
 
-Turns out the one I need is `1.8.0_242` because it contains the javascript execution engine needed for `ant`. However, this version is not compatible with macOS Monterey generating the `NSPlaceholderString` error. By an obscure reference in an `ant` bug report I cam across the config `"bypass_lp": true` to add to `ant`.
+Turns out the one I need is `1.8.0_242` because it contains the javascript execution engine needed for `ant`. However, this version is not compatible with macOS Monterey generating the `NSPlaceholderString` error. By an obscure reference in an `ant` bug report I came across the config `"bypass_lp": true` to add to `ant`. With that function, compilation started working again.
+
+ Running macOS Big Sur I had been using Oracle JDK which worked with `sencha`. After the update to macOS Monterey I got a new version of Oracle JDK installed that did not work with `sencha` because of the lack of javascript execution. The version bundled with `sencha` did not work with macOS Monterey because of the `NSPlaceholderString` bug in `ant`.
 
 **Having applications rely on an execution framework that can be independently updated or even destroyed by the OS is so stupid I can not even put words on it.**
 
-One day completely down the drain troubleshooting stupid Java! May all Java developers burn in hell!
+One day completely down the drain troubleshooting stupid Java!
