@@ -4,6 +4,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 **DISCLAIMER** The information published here should not be considered recommendations or best-practices. You should use the documentation and your own judgement when developing software.
 
+
 ## Code
 
 * [First release of Apiary Logger](code/apiary-logger.md) (2020-12-15)
