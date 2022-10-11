@@ -11,6 +11,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Articles
 
+* [Testing your CodeIgniter backend API with Postman](postman-testing/testing-backend-with-postman.md) (2022-10-11)
 * [Mocking models while testing](db-testing/mocking-models.md) (2022-06-17)
 * [The hassle of creating a BAMBOO project](creating-bamboo/) (2022-06-07)
 * [Non-destructive Database testing](db-testing/non-destrive-db-testing.md) (2022-05-20)
