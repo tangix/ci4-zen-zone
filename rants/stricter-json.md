@@ -63,11 +63,11 @@ We simply take the body of the request and let Valinor try to map everything to 
 ```php
 $id = UserModel::factory()
 	->insert([
-					'firstname' => $data->firstname,
-					'lastname' => $data->lastname,
-					'email' => $data->email,
-					'country' => $data->country
-				]);
+				'firstname' => $data->firstname,
+				'lastname' => $data->lastname,
+				'email' => $data->email,
+				'country' => $data->country
+			]);
 ```
 
 Cool, eh?
