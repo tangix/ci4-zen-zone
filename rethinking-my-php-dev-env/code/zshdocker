@@ -1,0 +1,46 @@
+function php81run() {
+
+    if [ -z $1 ]; then
+        # Interactive shell
+        CMD=bash
+        DOCKER_CMD="docker container run -it --rm "
+        echo "PhpStorm serverName=$SERVERNAME"
+    else
+        # Run a command in the context of the php
+        # $* concatenates all passed arguments
+        CMD=$*
+        DOCKER_CMD="docker run --rm"    
+    fi
+
+    if [ "$PWD" = "$HOME" ]; then
+        if read -q "choice?You are running from HOME directory. Switch to ~/Tangix_Work/temp? "; then 
+             pushd ~/Tangix_Work/temp > /dev/null
+             DO_POP=1
+        else
+            DO_POP=0
+        fi
+        echo ""
+    fi
+
+    DEVENV=~/Tangix_Work/_devenv 
+    SERVERNAME=docker-${PWD##*/}
+    # ${=VAR} returns the string as is, even with spaces
+    ${=DOCKER_CMD} \
+    -v $(pwd):/opt/project \
+    -v composer-cache:/root/.composer/ \
+    -v $DEVENV/images/php/php81/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    -v $DEVENV/images/php/php81/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini \
+    -v $DEVENV/images/php/php81/conf.d/zzz-tangix.ini:/usr/local/etc/php/conf.d/zzz-tangix.ini \
+    --workdir /opt/project --name "cli-${PWD##*/}-`date +%s`" \
+    -e PHP_IDE_CONFIG=serverName=$SERVERNAME \
+    --cgroup-parent php-devenv \
+    --hostname `hostname -s` tangix:8.1-cli ${=CMD}
+
+    if [ "$DO_POP"  = "1" ]; then   
+        popd > /dev/null
+    fi
+}
+
+alias p81="php81run $*"
+alias php="php81run php $*"
+alias composer="php81run composer $*"

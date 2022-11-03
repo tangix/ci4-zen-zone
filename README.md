@@ -12,6 +12,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 ## Articles
 
 * [Rethinking My PHP Development Environment (Part 1)](rethinking-my-php-dev-env/rethinking-my-php-dev-env.md) (2022-11-03)
+* [Rethinking My PHP Development Environment (Part 2)](rethinking-my-php-dev-env/part2-creating-docker-images.md) (2022-11-03)
 * [Improving Route filters](improve-route-filters/improving-route-filters.md) (2022-10-21)
 * [Testing your CodeIgniter backend API with Postman](postman-testing/testing-backend-with-postman.md) (2022-10-11)
 * [Mocking models while testing](db-testing/mocking-models.md) (2022-06-17)

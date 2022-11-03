@@ -82,7 +82,7 @@ Running PHP from the CLI is a different problem. Docker provides a way to run co
 
 ## Part 2
 
-Part 2 of this series will describe the Docker setup and the tooling I have been using to maintain the setup. Leaving you with the current state of my Docker environment.
+[Part 2](part-2-creating-docker-images.md) of this series will describe the Docker setup and the tooling I have been using to maintain the setup. Leaving you with the current state of my Docker environment.
 
 ![Docker devenv](images/docker-containers.png)
 
