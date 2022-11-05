@@ -56,9 +56,9 @@ Starting down the Docker-way with redis it was natural to continue with apache i
 
 ### PHP
 
-The toughest nut to crack! My required versions of PHP has been reduced during the years. The 5.6 and 7.2 projects has been migrated to 8.1. One project is still on 7.4 so a setup with 7.4 and 8.1 of PHP would work. Both versions are still supported which is great. So, instead of five versions I could get by with two!
+The toughest nut to crack! My required versions of PHP has been reduced during the years. The 5.6 and 7.2 projects have been migrated to 8.1. One project is still on 7.4 so a setup with 7.4 and 8.1 of PHP would work. Both versions are still supported which is great. So, instead of five versions I could get by with two!
 
-Running php in `apache` using the Docker images using a mounted volume from the source directory is well supported and understood. Our five years of running Docker in our production workloads have been great and we know how to create and maintain the images.
+Running php in `apache` using the Docker images using a mounted volume from the source directory is well supported and understood. Our five years of using Docker for our production workloads have been great and we know how to create and maintain the images.
 
 Running PHP in CLI is a different thing. Some things require CLI access for PHP, for example `composer` and `phpunit`. We have that configured in the CI/CO pipe-line with BAMBOO running `phpunit` etc as part of the Docker image build. This must thus be available in the local development as well.
 

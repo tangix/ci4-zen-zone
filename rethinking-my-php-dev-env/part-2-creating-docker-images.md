@@ -2,9 +2,17 @@
 
 ## Installing Docker Desktop
 
-Docker is installed and tested in both the CLI and the Desktop application. Version 14.3.1 is the latest at this time. Although not needed, the company has a Pro license of Docker Desktop. Only post-install step was to enable the *Beta Features* for the new Virtualization framework and the VirtioFS accelerated directory sharing. 
+Docker is installed and tested in both the CLI and the Desktop application. Version 14.3.1 is the latest at this time. Although not needed, my company has a Pro license of Docker Desktop to give support for the continued development. Only post-install step was to enable the *Beta Features* for the new Virtualization framework and the VirtioFS accelerated directory sharing. 
 
 Experimented using the `--platform linux/arm64` flag to make sure docker images work but found out that the images I will use are already available in ARM versions and thus runs natively.
+
+## Docker Extensions
+
+Still in beta but I found two great extensions to use in Docker Desktop; *Disk usage* and *Resource usage*.
+
+![Resource usage](images/resource-usage.png)
+
+The quick overview of allocated resources was indeed helpful and allowed me to scale down the allocated RAM from 8 GB (default) to 6GB without any noticeable slowdown.
 
 ## Organizing stuff
 
@@ -131,3 +139,23 @@ Hello World!
 The `php81run` function maps and sets the current host directory to the Docker container process and then executes the `php` command with the passed arguments *in the docker container*. 
 
 The amazing with this approach is that the `php` command is running inside a container with the installed version! Additional aliases allows running `composer` in the same way from the command prompt.
+
+### Comments regarding zsdhdocker commands
+
+This is a list of some of the things I have learned when working with this development setup related to Docker:
+
+#### Handling CTRL-C
+
+To make sure signals such as CTRL-C works in the interactive docker tty, add `--init` to the container `run` arguments.
+
+#### Mounting home directory
+
+Docker is not happy if trying to mount `~` in the container. A warning message is displayed:
+
+![Mount warning](images/share-home.png)
+
+To handle this, a check is present in `zshdocker` and prompting the user to go to a `temp` directory instead.
+
+#### managing Path Mappings in PhpStorm
+
+The `PHP_IDE_CONFIG` environment variable is set in the running container to indicate to PhpStorm the `serverName` and then allow each project to have a separate path mapping for debugging. The `serverName` is constructed as `docker-${PWD##*/}` where `${PWD##*/}` gives the name of the directory.

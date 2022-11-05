@@ -1,15 +1,17 @@
 function php81run() {
 
+    SERVERNAME=docker-${PWD##*/}
+
     if [ -z $1 ]; then
         # Interactive shell
         CMD=bash
-        DOCKER_CMD="docker container run -it --rm "
+        DOCKER_CMD="docker container run -it --init --rm "
         echo "PhpStorm serverName=$SERVERNAME"
     else
         # Run a command in the context of the php
         # $* concatenates all passed arguments
         CMD=$*
-        DOCKER_CMD="docker run --rm"    
+        DOCKER_CMD="docker run -it --init --rm"    
     fi
 
     if [ "$PWD" = "$HOME" ]; then
@@ -23,7 +25,6 @@ function php81run() {
     fi
 
     DEVENV=~/Tangix_Work/_devenv 
-    SERVERNAME=docker-${PWD##*/}
     # ${=VAR} returns the string as is, even with spaces
     ${=DOCKER_CMD} \
     -v $(pwd):/opt/project \
