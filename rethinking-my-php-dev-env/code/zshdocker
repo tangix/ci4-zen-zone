@@ -14,6 +14,8 @@ function php81run() {
         DOCKER_CMD="docker run -it --init --rm"    
     fi
 
+    DO_POP=0
+
     if [ "$PWD" = "$HOME" ]; then
         if read -q "choice?You are running from HOME directory. Switch to ~/Tangix_Work/temp? "; then 
              pushd ~/Tangix_Work/temp > /dev/null
@@ -27,7 +29,7 @@ function php81run() {
     DEVENV=~/Tangix_Work/_devenv 
     # ${=VAR} returns the string as is, even with spaces
     ${=DOCKER_CMD} \
-    -v $(pwd):/opt/project \
+    -v "$(pwd):/opt/project" \
     -v composer-cache:/root/.composer/ \
     -v $DEVENV/images/php/php81/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     -v $DEVENV/images/php/php81/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini \
@@ -37,8 +39,69 @@ function php81run() {
     --cgroup-parent php-devenv \
     --hostname `hostname -s` tangix:8.1-cli ${=CMD}
 
-    if [ "$DO_POP"  = "1" ]; then   
+    if [ "$DO_POP" = "1" ]; then   
         popd > /dev/null
+    fi
+}
+
+function php74run() {
+
+    SERVERNAME=docker-${PWD##*/}
+
+    if [ -z $1 ]; then
+        # Interactive shell
+        CMD=bash
+        DOCKER_CMD="docker container run -it --init --rm "
+        echo "PhpStorm serverName=$SERVERNAME"
+    else
+        # Run a command in the context of the php
+        # $* concatenates all passed arguments
+        CMD=$*
+        DOCKER_CMD="docker run -it --init --rm"    
+    fi
+
+    DO_POP=0
+
+    if [ "$PWD" = "$HOME" ]; then
+        if read -q "choice?You are running from HOME directory. Switch to ~/Tangix_Work/temp? "; then 
+             pushd ~/Tangix_Work/temp > /dev/null
+             DO_POP=1
+        else
+            DO_POP=0
+        fi
+        echo ""
+    fi
+
+    DEVENV=~/Tangix_Work/_devenv 
+    # ${=VAR} returns the string as is, even with spaces
+    ${=DOCKER_CMD} \
+    -v "$(pwd):/opt/project" \
+    -v composer-cache:/root/.composer/ \
+    -v $DEVENV/images/php/php81/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    -v $DEVENV/images/php/php81/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini \
+    -v $DEVENV/images/php/php81/conf.d/zzz-tangix.ini:/usr/local/etc/php/conf.d/zzz-tangix.ini \
+    --workdir /opt/project --name "cli-${PWD##*/}-`date +%s`" \
+    -e PHP_IDE_CONFIG=serverName=$SERVERNAME \
+    --cgroup-parent php-devenv \
+    --hostname `hostname -s` tangix:7.4-cli ${=CMD}
+
+    if [ "$DO_POP" = "1" ]; then   
+        popd > /dev/null
+    fi
+}
+
+function sphp() {
+    echo "Switching to PHP $1 of web-server..."
+    if [ "$1" = "7.4" ]; then
+        docker stop php-web-81
+        docker start php-web-74
+        docker update --restart no php-web-81
+        docker update --restart unless-stopped php-web-74
+    else        
+        docker stop php-web-74
+        docker start php-web-81
+        docker update --restart unless-stopped php-web-81
+        docker update --restart no php-web-74
     fi
 }
 

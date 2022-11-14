@@ -14,6 +14,20 @@ Still in beta but I found two great extensions to use in Docker Desktop; *Disk u
 
 The quick overview of allocated resources was indeed helpful and allowed me to scale down the allocated RAM from 8 GB (default) to 6GB without any noticeable slowdown.
 
+## Updates and Comments
+
+### 2022-11-14
+
+Got error `docker: invalid reference format: repository name must be lowercase.`  when trying to run a project.
+
+Found out that the volume mapping breaks if the path to the project directory contains spaces. Fixed this in `zshdocker` by enclosing the mapping in quotes. 
+
+### 2022-11-08
+
+Need to get the PHP 7.4 version up and running for web-development. Found out it's easier to script the change when having generic 7.4 or 8.1 image names. Changed the name of the build images for `apache` to include the version in the image name instead of the name of the container. Also noticing my PHP 7.4 project requires `mcrypt`. 
+
+Added the `sphp` function to `zshdocker` file.
+
 ## Organizing stuff
 
 I mainly live in the Terminal on the command line or in PhpStorm. Having an organized and efficient structure is important for me. I keep all my work in `~/Tangix_Work/` with important projects having names starting with `_` to be at the top of the list. A couple of `zsh` functions and aliases help me move around quickly - for example `tw` taking me directly to the work directory or `gh` taking me to the directory of all my GitHub projects.
@@ -159,3 +173,7 @@ To handle this, a check is present in `zshdocker` and prompting the user to go t
 #### managing Path Mappings in PhpStorm
 
 The `PHP_IDE_CONFIG` environment variable is set in the running container to indicate to PhpStorm the `serverName` and then allow each project to have a separate path mapping for debugging. The `serverName` is constructed as `docker-${PWD##*/}` where `${PWD##*/}` gives the name of the directory.
+
+#### Switching between PHP version for apache
+
+Switching between 8.1 and 7.4 is done with the `sphp` function requiring `7.4` or `8.1` as argument.
