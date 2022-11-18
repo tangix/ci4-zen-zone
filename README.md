@@ -11,6 +11,8 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Articles
 
+* [Rethinking My PHP Development Environment - Getting localstack to run (Part 4)](rethinking-my-php-dev-env/part-4-getting-localstack-running.md) (2022-11-18)
+* [Rethinking My PHP Development Environment - Migrating a project to 7.4 (Part 3)](rethinking-my-php-dev-env/part-3-fast-forward-to-2022.md) (2022-11-12)
 * [Rethinking My PHP Development Environment (Part 1)](rethinking-my-php-dev-env/rethinking-my-php-dev-env.md) (2022-11-03)
 * [Rethinking My PHP Development Environment (Part 2)](rethinking-my-php-dev-env/part-2-creating-docker-images.md) (2022-11-08)
 * [Improving Route filters](improve-route-filters/improving-route-filters.md) (2022-10-21)
