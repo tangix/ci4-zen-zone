@@ -11,6 +11,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Articles
 
+* [Migrating a CI3 project to CI4](adobelm-service/ci4-migration.md) (2022-12-08)
 * [Effortless PHP upgrade](rethinking-my-php-dev-env/easy-php-update.md) (2022-11-29)
 * [Rethinking My PHP Development Environment - Getting localstack to run (Part 4)](rethinking-my-php-dev-env/part-4-getting-localstack-running.md) (2022-11-18)
 * [Rethinking My PHP Development Environment - Migrating a project to 7.4 (Part 3)](rethinking-my-php-dev-env/part-3-fast-forward-to-2022.md) (2022-11-12)
