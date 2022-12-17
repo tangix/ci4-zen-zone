@@ -27,6 +27,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Rants and Thoughts
 
+* [git over ssh problems after upgrading to macOS Ventura](rants/git-ssh-ventura.md) (2022-12-17)
 * [Please just use ULIDs instead of UUIDs](rants/please-just-use-ulids.md) (2022-10-21)
 * [Tenth ring of Hell - troubleshooting Java environments](rants/tenth-ring-of-hell.md) (2022-07-04)
 * [Making JSON parsing more strict](rants/stricter-json.md) (2022-07-01)
