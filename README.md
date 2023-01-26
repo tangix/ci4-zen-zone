@@ -11,6 +11,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Articles
 
+* [Office 365 OAuth - Oh' what Joy!](office365-oauth/office365-with-oauth.md) (2023-01-26)
 * [Migrating a CI3 project to CI4](adobelm-service/ci4-migration.md) (2022-12-08)
 * [Effortless PHP upgrade](rethinking-my-php-dev-env/easy-php-update.md) (2022-11-29)
 * [Rethinking My PHP Development Environment - Getting localstack to run (Part 4)](rethinking-my-php-dev-env/part-4-getting-localstack-running.md) (2022-11-18)
