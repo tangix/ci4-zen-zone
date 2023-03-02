@@ -11,6 +11,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Articles
 
+* [The VMware vCenter upgrade that went very, very bad](vcenter-reinstallation/vcenter-reinstall.md) (2023-03-01)
 * [Cookie Domain and AWS Load Balancers](cookie-domain-and-elb/cookie-domain-and-elb.md) (2023-02-12)
 * [Office 365 OAuth - Oh' what Joy!](office365-oauth/office365-with-oauth.md) (2023-01-26)
 * [Migrating a CI3 project to CI4](adobelm-service/ci4-migration.md) (2022-12-08)
