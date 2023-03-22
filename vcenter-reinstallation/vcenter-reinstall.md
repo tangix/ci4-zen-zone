@@ -8,17 +8,17 @@ So with backups running, upgrading from 7.0.3.01200 to 7.0.3.01300 shouldn't pos
 
 ## VMware's Version Hell
 
-VMware is the only company that I know of that is actively working on confusing their customers with 3 - **three** - different versioning systems! 
+VMware is the only company that I know of that is actively working on confusing their customers with 3 - **three!** - different versioning systems! 
 
 ![Version Hell](images/version.png "Version Hell")
 
-Looking in vCenter application, the version number is shown as *7.0.3.01300*. However, on VMware's support pages, the same version are referred to *7.0U3k*. And to make it even harder, the ISO-files introduce the build number so the same version is now named *VMware-VCSA-all-7.0.3-21290409.iso*.
+Looking in vCenter application, the version number is shown as *7.0.3.01300*. However, on VMware's support pages, the same version is referred to as *7.0U3k*. And to make it even harder, the ISO-files introduce the build number so the same version is now named *VMware-VCSA-all-7.0.3-21290409.iso*.
 
 ```
 7.0.3.01300 == 7.0U3k == 7.0.3-21290409
 ```
 
-Finally understand which version I am on and which version to upgrade to I started vCenter's built-in upgrade wizard and went ahead.
+Finally understanding which version I am on and which version to upgrade to I started vCenter's built-in upgrade wizard and went ahead.
 
 ## The simple Upgrade the Failed (miserably!)
 
@@ -50,12 +50,12 @@ Error: Unknown system resource type seat
 
 Long story short - found this [excellent article](https://medium.com/@mikecarpendale/vcenter-server-appliance-restore-fails-if-youve-tinkered-with-the-vm-resources-7eb8797b0544) describing why the restore failed and saw directly that this was my problem. My old vCenter VM contained "only" 16 disks but the newly installed a whooping 17 disks! 
 
-![Disks for vCenter VM](images/disks_vcenter.png "Version Hell")
+![Disks for vCenter VM](images/disks_vcenter.png "vCenter virtual harddrives")
 
-The backup from a "16 disk vCenter" installation (made in early 2020) was for some stupid reason not possible to restore on a current "17 disk vCenter" installation - *even when using exactly the same vCenter version!* 
+The backup from a "16 disk vCenter" installation (made in early 2020) was for some stupid reason not possible to restore on a newly installed "17 disk vCenter" installation - *even when using exactly the same vCenter version!* 
 
 ## Plan C - just reinstall!
 
-With knowledge of what to search for I found many vCenter users in the same situation - problems restoring backups to new installations. The easiest solution seems to be to simply reinstall and re-add the ESXi servers. I lost historical performance data but I can live with that.
+Armed with knowledge of what to search for I found many vCenter users in the same situation - problems restoring backups to new installations. The easiest solution seems to be to simply reinstall and re-add the ESXi servers. I lost historical performance data but I can live with that.
 
 Another fun evening!
