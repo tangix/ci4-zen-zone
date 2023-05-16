@@ -30,6 +30,7 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 ## Rants and Thoughts
 
+* [Implementing a CodeIgniter Registrar for Database config](rants/using-registrars.md) (2023-05-16)
 * [Case-sensitive filesystems are hard](rants/docker-filesystem-case-issues.md) (2023-03-22)
 * [git over ssh problems after upgrading to macOS Ventura](rants/git-ssh-ventura.md) (2022-12-17)
 * [Please just use ULIDs instead of UUIDs](rants/please-just-use-ulids.md) (2022-10-21)
