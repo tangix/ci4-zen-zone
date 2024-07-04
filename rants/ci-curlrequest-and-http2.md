@@ -74,7 +74,7 @@ Comparing with my own code using `CURLRequest` and I spot the difference easily 
 curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
 ```
 
-Reading the CI documentation on [`version´](https://codeigniter4.github.io/userguide/libraries/curlrequest.html#version) *I passed "2.0" as `version`*, simply because I don't really like working with floats:
+Reading the CI documentation on the [`version`](https://codeigniter4.github.io/userguide/libraries/curlrequest.html#version) configuration *I passed '2.0' as* `version`, simply because I don't really like working with floats:
 
 ```php
 $response = $curl->request(
@@ -85,7 +85,7 @@ $response = $curl->request(
 			'grant_type' => 'client_credentials',
 		],
 		'auth' => $auth_config,
-		'version' => "2.0",
+		'version' => '2.0',
 	]
 );
 ```
