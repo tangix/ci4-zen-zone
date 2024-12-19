@@ -4,13 +4,13 @@ This repository holds my thoughts and understandings related to the CodeIgniter4
 
 **DISCLAIMER** The information published here should not be considered recommendations or best-practices. You should use the documentation and your own judgement when developing software.
 
-
 ## Code
 
 * [First release of Apiary Logger](code/apiary-logger.md) (2020-12-15)
 
 ## Articles
 
+* [Setting up a container stack for shared development in CodeIgniter](docker-ci4-dev/docker-ci4-dev.md) (2024-12-19)
 * [The VMware vCenter upgrade that went very, very bad](vcenter-reinstallation/vcenter-reinstall.md) (2023-03-01)
 * [Cookie Domain and AWS Load Balancers](cookie-domain-and-elb/cookie-domain-and-elb.md) (2023-02-12)
 * [Office 365 OAuth - Oh' what Joy!](office365-oauth/office365-with-oauth.md) (2023-01-26)

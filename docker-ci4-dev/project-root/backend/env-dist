@@ -1,0 +1,6 @@
+CI_ENVIRONMENT = development
+
+database.default.hostname = db
+database.default.username = 'root'
+database.default.password = 'example'
+database.default.database = 'example'
