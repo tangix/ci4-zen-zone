@@ -1,6 +1,6 @@
 # Docker compose for CodeIgniter development
 
-SRecently I started a new development project that I plan to work on together with others. This means that the development environment must be consistent and possible to replicate for the other developers. The project is planned to use a CodeIgniter 4 backend together with a Vue frontend. 
+Recently I started a new development project that I plan to work on together with others. This means that the development environment must be consistent and possible to replicate for the other developers. The project is planned to use a CodeIgniter 4 backend together with a Vue frontend. 
 
 The initial approach is to use Docker to create an isolated PHP 8.2 environment for the development. A separate Maria DB database instance and phpMyAdmin should also be included.
 
